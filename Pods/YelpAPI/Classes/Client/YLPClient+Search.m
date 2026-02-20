@@ -60,19 +60,156 @@
 }
 
 - (void)searchWithQuery:(YLPQuery *)query
-      completionHandler:(YLPSearchCompletionHandler)completionHandler {
-    NSDictionary *params = [query parameters];
-    NSURLRequest *req = [self searchRequestWithParams:params];
-    
-    [self queryWithRequest:req completionHandler:^(NSDictionary *responseDict, NSError *error) {
-        if (error) {
-            completionHandler(nil, error);
-        } else {
-            YLPSearch *search = [[YLPSearch alloc] initWithDictionary:responseDict];
-            completionHandler(search, nil);
+      completionHandler:(YLPSearchCompletionHandler)completionHandler {    
+    NSDictionary *mockResponse = @{
+        @"total": @10,
+        @"businesses": @[
+            @{
+                @"id": @"coffee-1",
+                @"name": @"Philz Coffee",
+                @"is_closed": @NO,
+                @"image_url": @"https://example.com/philz.jpg",
+                @"url": @"https://www.yelp.com/biz/philz-coffee-cupertino",
+                @"rating": @4.5,
+                @"review_count": @1240,
+                @"phone": @"+14089990001",
+                @"categories": @[
+                    @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
+                ],
+                @"coordinates": @{
+                    @"latitude": @37.3237,
+                    @"longitude": @-122.0322
+                },
+                @"location": @{
+                    @"city": @"Cupertino",
+                    @"state": @"CA",
+                    @"zip_code": @"95014",
+                    @"country": @"US",
+                    @"display_address": @[
+                        @"20686 Stevens Creek Blvd",
+                        @"Cupertino, CA 95014"
+                    ]
+                }
+            },
+            @{
+                @"id": @"coffee-2",
+                @"name": @"Blue Bottle Coffee",
+                @"is_closed": @NO,
+                @"image_url": @"https://example.com/bluebottle.jpg",
+                @"url": @"https://www.yelp.com/biz/blue-bottle-coffee-cupertino",
+                @"rating": @4.0,
+                @"review_count": @820,
+                @"phone": @"+14089990002",
+                @"categories": @[
+                    @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
+                ],
+                @"coordinates": @{
+                    @"latitude": @37.3318,
+                    @"longitude": @-122.0054
+                },
+                @"location": @{
+                    @"city": @"Cupertino",
+                    @"state": @"CA",
+                    @"zip_code": @"95014",
+                    @"country": @"US",
+                    @"display_address": @[
+                        @"19501 Biscayne Dr",
+                        @"Cupertino, CA 95014"
+                    ]
+                }
+            },
+            @{
+                @"id": @"coffee-3",
+                @"name": @"Voyager Craft Coffee",
+                @"is_closed": @NO,
+                @"image_url": @"https://example.com/voyager.jpg",
+                @"url": @"https://www.yelp.com/biz/voyager-craft-coffee",
+                @"rating": @4.5,
+                @"review_count": @510,
+                @"phone": @"+14089990003",
+                @"categories": @[
+                    @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
+                ],
+                @"coordinates": @{
+                    @"latitude": @37.3521,
+                    @"longitude": @-122.0118
+                },
+                @"location": @{
+                    @"city": @"Santa Clara",
+                    @"state": @"CA",
+                    @"zip_code": @"95051",
+                    @"country": @"US",
+                    @"display_address": @[
+                        @"3985 Stevens Creek Blvd",
+                        @"Santa Clara, CA 95051"
+                    ]
+                }
+            },
+            @{
+                @"id": @"coffee-4",
+                @"name": @"Coffee Society",
+                @"is_closed": @NO,
+                @"image_url": @"https://example.com/society.jpg",
+                @"url": @"https://www.yelp.com/biz/coffee-society-cupertino",
+                @"rating": @4.0,
+                @"review_count": @340,
+                @"phone": @"+14089990004",
+                @"categories": @[
+                    @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
+                ],
+                @"coordinates": @{
+                    @"latitude": @37.3229,
+                    @"longitude": @-122.0312
+                },
+                @"location": @{
+                    @"city": @"Cupertino",
+                    @"state": @"CA",
+                    @"zip_code": @"95014",
+                    @"country": @"US",
+                    @"display_address": @[
+                        @"21265 Stevens Creek Blvd",
+                        @"Cupertino, CA 95014"
+                    ]
+                }
+            },
+            @{
+                @"id": @"coffee-5",
+                @"name": @"Starbucks",
+                @"is_closed": @NO,
+                @"image_url": @"https://example.com/starbucks.jpg",
+                @"url": @"https://www.yelp.com/biz/starbucks-cupertino",
+                @"rating": @3.5,
+                @"review_count": @215,
+                @"phone": @"+14089990005",
+                @"categories": @[
+                    @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
+                ],
+                @"coordinates": @{
+                    @"latitude": @37.3355,
+                    @"longitude": @-122.0088
+                },
+                @"location": @{
+                    @"city": @"Cupertino",
+                    @"state": @"CA",
+                    @"zip_code": @"95014",
+                    @"country": @"US",
+                    @"display_address": @[
+                        @"1 Apple Park Way",
+                        @"Cupertino, CA 95014"
+                    ]
+                }
+            }
+        ],
+        @"region": @{
+            @"center": @{
+                @"latitude": @37.3349,
+                @"longitude": @-122.0090
+            }
         }
-        
-    }];
+    };
+
+    YLPSearch *search = [[YLPSearch alloc] initWithDictionary:mockResponse];
+    completionHandler(search, nil);
 }
 
 @end
