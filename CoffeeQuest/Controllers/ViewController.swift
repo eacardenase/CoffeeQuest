@@ -36,14 +36,22 @@ public class ViewController: UIViewController {
   private let client = YLPClient(apiKey: YelpAPIKey)
   private let locationManager = CLLocationManager()
   
-  // MARK: - Outlets
-  @IBOutlet public var mapView: MKMapView! {
-    didSet {
-      mapView.showsUserLocation = true
-    }
-  }
+  private lazy var mapView: MKMapView = {
+    let _mapView = MKMapView()
+
+    _mapView.showsUserLocation = true
+    _mapView.userTrackingMode = .follow
+    _mapView.delegate = self
+
+    return _mapView
+  }()
   
   // MARK: - View Lifecycle
+  
+  public override func loadView() {
+    view = mapView
+  }
+  
   public override func viewDidLoad() {
     super.viewDidLoad()
 

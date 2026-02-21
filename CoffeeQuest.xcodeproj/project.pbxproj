@@ -10,7 +10,6 @@
 		4252EAAA2023E05900847430 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252EAA92023E05900847430 /* APIKeys.swift */; };
 		C35933852023BF5700D85500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35933842023BF5700D85500 /* AppDelegate.swift */; };
 		C35933872023BF5700D85500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35933862023BF5700D85500 /* ViewController.swift */; };
-		C359338A2023BF5700D85500 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35933882023BF5700D85500 /* Main.storyboard */; };
 		C359338C2023BF5700D85500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C359338B2023BF5700D85500 /* Assets.xcassets */; };
 		C359338F2023BF5700D85500 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C359338D2023BF5700D85500 /* LaunchScreen.storyboard */; };
 		C35933972023D71C00D85500 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35933962023D71C00D85500 /* MapPin.swift */; };
@@ -25,7 +24,6 @@
 		C35933812023BF5700D85500 /* CoffeeQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35933842023BF5700D85500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35933862023BF5700D85500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C35933892023BF5700D85500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C359338B2023BF5700D85500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C359338E2023BF5700D85500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35933902023BF5700D85500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				C359338D2023BF5700D85500 /* LaunchScreen.storyboard */,
-				C35933882023BF5700D85500 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 			files = (
 				C359338F2023BF5700D85500 /* LaunchScreen.storyboard in Resources */,
 				C359338C2023BF5700D85500 /* Assets.xcassets in Resources */,
-				C359338A2023BF5700D85500 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,14 +258,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C35933882023BF5700D85500 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35933892023BF5700D85500 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C359338D2023BF5700D85500 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
