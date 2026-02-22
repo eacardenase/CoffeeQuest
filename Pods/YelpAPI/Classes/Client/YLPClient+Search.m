@@ -77,7 +77,7 @@
                     @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
                 ],
                 @"coordinates": @{
-                    @"latitude": @37.3237,
+                    @"latitude": @37.3403,
                     @"longitude": @-122.0322
                 },
                 @"location": @{
@@ -105,7 +105,7 @@
                 ],
                 @"coordinates": @{
                     @"latitude": @37.3318,
-                    @"longitude": @-122.0054
+                    @"longitude": @-122.02954
                 },
                 @"location": @{
                     @"city": @"Cupertino",
@@ -131,8 +131,8 @@
                     @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
                 ],
                 @"coordinates": @{
-                    @"latitude": @37.3521,
-                    @"longitude": @-122.0118
+                    @"latitude": @37.329,
+                    @"longitude": @-122.0293
                 },
                 @"location": @{
                     @"city": @"Santa Clara",
@@ -158,8 +158,8 @@
                     @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
                 ],
                 @"coordinates": @{
-                    @"latitude": @37.3229,
-                    @"longitude": @-122.0312
+                    @"latitude": @37.339,
+                    @"longitude": @-122.0259
                 },
                 @"location": @{
                     @"city": @"Cupertino",
@@ -185,8 +185,8 @@
                     @{ @"alias": @"coffee", @"title": @"Coffee & Tea" }
                 ],
                 @"coordinates": @{
-                    @"latitude": @37.3355,
-                    @"longitude": @-122.0088
+                    @"latitude": @37.3245,
+                    @"longitude": @-122.0348
                 },
                 @"location": @{
                     @"city": @"Cupertino",
