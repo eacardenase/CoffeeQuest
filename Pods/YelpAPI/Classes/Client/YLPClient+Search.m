@@ -124,7 +124,7 @@
                 @"is_closed": @NO,
                 @"image_url": @"https://example.com/voyager.jpg",
                 @"url": @"https://www.yelp.com/biz/voyager-craft-coffee",
-                @"rating": @4.5,
+                @"rating": @4.8,
                 @"review_count": @510,
                 @"phone": @"+14089990003",
                 @"categories": @[
@@ -151,7 +151,7 @@
                 @"is_closed": @NO,
                 @"image_url": @"https://example.com/society.jpg",
                 @"url": @"https://www.yelp.com/biz/coffee-society-cupertino",
-                @"rating": @4.0,
+                @"rating": @3.0,
                 @"review_count": @340,
                 @"phone": @"+14089990004",
                 @"categories": @[

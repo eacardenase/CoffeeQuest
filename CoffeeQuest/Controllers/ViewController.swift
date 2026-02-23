@@ -114,14 +114,63 @@ extension ViewController: MKMapViewDelegate {
         continue
       }
 
-      let coordinate = CLLocationCoordinate2D(latitude: yelpCoordinate.latitude,
-                                              longitude: yelpCoordinate.longitude)
       let name = business.name
       let rating = business.rating
-      let annotation = MapPin(coordinate: coordinate,
-                              name: name,
-                              rating: rating)
+      let image: UIImage
+      let coordinate = CLLocationCoordinate2D(
+        latitude: yelpCoordinate.latitude,
+        longitude: yelpCoordinate.longitude
+      )
+
+      switch rating {
+      case 0.0..<3.5:
+        image = UIImage(resource: .bad)
+      case 3.5..<4.0:
+        image = UIImage(resource: .meh)
+      case 4.0..<4.75:
+        image = UIImage(resource: .good)
+      case 4.75...5.0:
+        image = UIImage(resource: .great)
+      default:
+        image = UIImage(resource: .bad)
+      }
+
+      let annotation = BusinessMapViewModel(
+        coordinate: coordinate,
+        name: name,
+        rating: rating,
+        image: image
+      )
+
       mapView.addAnnotation(annotation)
     }
+  }
+
+  public func mapView(
+    _ mapView: MKMapView,
+    viewFor annotation: any MKAnnotation
+  ) -> MKAnnotationView? {
+    guard let viewModel = annotation as? BusinessMapViewModel else {
+      return nil
+    }
+
+    let identifier = "business"
+    let annotationView: MKAnnotationView
+
+    if let existingView = mapView.dequeueReusableAnnotationView(
+      withIdentifier: identifier
+    ) {
+      annotationView = existingView
+    } else {
+      annotationView = MKAnnotationView(
+        annotation: viewModel,
+        reuseIdentifier: identifier
+      )
+    }
+
+    annotationView.image = viewModel.image
+    annotationView.canShowCallout = true
+
+    return annotationView
   }
 }
