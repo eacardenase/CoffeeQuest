@@ -97,7 +97,7 @@
                 @"is_closed": @NO,
                 @"image_url": @"https://example.com/bluebottle.jpg",
                 @"url": @"https://www.yelp.com/biz/blue-bottle-coffee-cupertino",
-                @"rating": @4.0,
+                @"rating": @2.6,
                 @"review_count": @820,
                 @"phone": @"+14089990002",
                 @"categories": @[

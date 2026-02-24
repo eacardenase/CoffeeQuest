@@ -35,6 +35,7 @@ public class ViewController: UIViewController {
   private var businesses: [YLPBusiness] = []
   private let client = YLPClient(apiKey: YelpAPIKey)
   private let locationManager = CLLocationManager()
+  public let annotationFactory = AnnotationFactory()
   
   private lazy var mapView: MKMapView = {
     let _mapView = MKMapView()
@@ -70,7 +71,11 @@ extension ViewController: MKMapViewDelegate {
   public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
     centerMap(on: userLocation.coordinate)
   }
-  
+
+  public func mapView(_ mapView: MKMapView, didSelect annotation: any MKAnnotation) {
+    print(annotation.coordinate)
+  }
+
   private func centerMap(on coordinate: CLLocationCoordinate2D) {
     let regionRadius: CLLocationDistance = 3000
     let coordinateRegion = MKCoordinateRegion(center: coordinate,
@@ -110,39 +115,12 @@ extension ViewController: MKMapViewDelegate {
   
   private func addAnnotations() {
     for business in businesses {
-      guard let yelpCoordinate = business.location.coordinate else {
-        continue
-      }
+      guard
+        let viewModel =
+          annotationFactory.createBusinessMapViewModel(for: business)
+      else { continue }
 
-      let name = business.name
-      let rating = business.rating
-      let image: UIImage
-      let coordinate = CLLocationCoordinate2D(
-        latitude: yelpCoordinate.latitude,
-        longitude: yelpCoordinate.longitude
-      )
-
-      switch rating {
-      case 0.0..<3.5:
-        image = UIImage(resource: .bad)
-      case 3.5..<4.0:
-        image = UIImage(resource: .meh)
-      case 4.0..<4.75:
-        image = UIImage(resource: .good)
-      case 4.75...5.0:
-        image = UIImage(resource: .great)
-      default:
-        image = UIImage(resource: .bad)
-      }
-
-      let annotation = BusinessMapViewModel(
-        coordinate: coordinate,
-        name: name,
-        rating: rating,
-        image: image
-      )
-
-      mapView.addAnnotation(annotation)
+      mapView.addAnnotation(viewModel)
     }
   }
 
@@ -154,17 +132,16 @@ extension ViewController: MKMapViewDelegate {
       return nil
     }
 
-    let identifier = "business"
     let annotationView: MKAnnotationView
 
     if let existingView = mapView.dequeueReusableAnnotationView(
-      withIdentifier: identifier
+      withIdentifier: NSStringFromClass(BusinessMapViewModel.self)
     ) {
       annotationView = existingView
     } else {
       annotationView = MKAnnotationView(
         annotation: viewModel,
-        reuseIdentifier: identifier
+        reuseIdentifier: NSStringFromClass(BusinessMapViewModel.self)
       )
     }
 

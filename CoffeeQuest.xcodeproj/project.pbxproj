@@ -3,42 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4252EAAA2023E05900847430 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252EAA92023E05900847430 /* APIKeys.swift */; };
-		C35933852023BF5700D85500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35933842023BF5700D85500 /* AppDelegate.swift */; };
-		C359338C2023BF5700D85500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C359338B2023BF5700D85500 /* Assets.xcassets */; };
 		C38756A0E9013F2F1E6253E0 /* Pods_CoffeeQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C9278042C96775D875EE9F /* Pods_CoffeeQuest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0EB69E332F1CF61F584429C4 /* Pods-CoffeeQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeQuest/Pods-CoffeeQuest.release.xcconfig"; sourceTree = "<group>"; };
-		4252EAA92023E05900847430 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		75B5478A401116797B732C06 /* Pods-CoffeeQuest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeQuest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeQuest/Pods-CoffeeQuest.debug.xcconfig"; sourceTree = "<group>"; };
 		A53457962F48FE4100C81134 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C35933812023BF5700D85500 /* CoffeeQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C35933842023BF5700D85500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C359338B2023BF5700D85500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C35933902023BF5700D85500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C9278042C96775D875EE9F /* Pods_CoffeeQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A5257F232F4D02C2006E5125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		A5FA0EA02F4E47A50017ECEF /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/LaunchScreen.storyboard,
+				Resources/Info.plist,
 			);
 			target = C35933802023BF5700D85500 /* CoffeeQuest */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A5257F1A2F4D0250006E5125 /* Controllers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Controllers; sourceTree = "<group>"; };
-		A5257F1D2F4D0258006E5125 /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
-		A5257F222F4D02BF006E5125 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5257F232F4D02C2006E5125 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		A5FA0E972F4E47A50017ECEF /* CoffeeQuest */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5FA0EA02F4E47A50017ECEF /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CoffeeQuest; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,24 +44,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4252EAA42023DFE500847430 /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				C35933842023BF5700D85500 /* AppDelegate.swift */,
-			);
-			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		4252EAA82023DFFB00847430 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4252EAA92023E05900847430 /* APIKeys.swift */,
-				C359338B2023BF5700D85500 /* Assets.xcassets */,
-				C35933902023BF5700D85500 /* Info.plist */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5FEA8354D6F6EA2089B72C93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				A53457962F48FE4100C81134 /* README.md */,
-				C35933832023BF5700D85500 /* CoffeeQuest */,
+				A5FA0E972F4E47A50017ECEF /* CoffeeQuest */,
 				C35933822023BF5700D85500 /* Products */,
 				C1EFE88AC37DC2B295A4CA23 /* Pods */,
 				5FEA8354D6F6EA2089B72C93 /* Frameworks */,
@@ -107,18 +80,6 @@
 				C35933812023BF5700D85500 /* CoffeeQuest.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C35933832023BF5700D85500 /* CoffeeQuest */ = {
-			isa = PBXGroup;
-			children = (
-				4252EAA42023DFE500847430 /* AppDelegate */,
-				A5257F1A2F4D0250006E5125 /* Controllers */,
-				4252EAA82023DFFB00847430 /* Resources */,
-				A5257F1D2F4D0258006E5125 /* ViewModels */,
-				A5257F222F4D02BF006E5125 /* Views */,
-			);
-			path = CoffeeQuest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +100,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A5257F1A2F4D0250006E5125 /* Controllers */,
-				A5257F1D2F4D0258006E5125 /* ViewModels */,
+				A5FA0E972F4E47A50017ECEF /* CoffeeQuest */,
 			);
 			name = CoffeeQuest;
 			productName = CoffeeQuest;
@@ -165,6 +125,7 @@
 				};
 			};
 			buildConfigurationList = C359337C2023BF5700D85500 /* Build configuration list for PBXProject "CoffeeQuest" */;
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -172,7 +133,6 @@
 				Base,
 			);
 			mainGroup = C35933782023BF5700D85500;
-			preferredProjectObjectVersion = 48;
 			productRefGroup = C35933822023BF5700D85500 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,7 +147,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C359338C2023BF5700D85500 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +196,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4252EAAA2023E05900847430 /* APIKeys.swift in Sources */,
-				C35933852023BF5700D85500 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
