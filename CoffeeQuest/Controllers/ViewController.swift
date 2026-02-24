@@ -110,39 +110,9 @@ extension ViewController: MKMapViewDelegate {
   
   private func addAnnotations() {
     for business in businesses {
-      guard let yelpCoordinate = business.location.coordinate else {
-        continue
+      if let annotation = BusinessMapViewModel(business: business) {
+        mapView.addAnnotation(annotation)
       }
-
-      let name = business.name
-      let rating = business.rating
-      let image: UIImage
-      let coordinate = CLLocationCoordinate2D(
-        latitude: yelpCoordinate.latitude,
-        longitude: yelpCoordinate.longitude
-      )
-
-      switch rating {
-      case 0.0..<3.5:
-        image = UIImage(resource: .bad)
-      case 3.5..<4.0:
-        image = UIImage(resource: .meh)
-      case 4.0..<4.75:
-        image = UIImage(resource: .good)
-      case 4.75...5.0:
-        image = UIImage(resource: .great)
-      default:
-        image = UIImage(resource: .bad)
-      }
-
-      let annotation = BusinessMapViewModel(
-        coordinate: coordinate,
-        name: name,
-        rating: rating,
-        image: image
-      )
-
-      mapView.addAnnotation(annotation)
     }
   }
 
@@ -154,17 +124,16 @@ extension ViewController: MKMapViewDelegate {
       return nil
     }
 
-    let identifier = "business"
     let annotationView: MKAnnotationView
 
     if let existingView = mapView.dequeueReusableAnnotationView(
-      withIdentifier: identifier
+      withIdentifier: NSStringFromClass(BusinessMapViewModel.self)
     ) {
       annotationView = existingView
     } else {
       annotationView = MKAnnotationView(
         annotation: viewModel,
-        reuseIdentifier: identifier
+        reuseIdentifier: NSStringFromClass(BusinessMapViewModel.self)
       )
     }
 

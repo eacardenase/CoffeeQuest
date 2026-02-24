@@ -28,39 +28,49 @@
 
 import MapKit
 import UIKit
+import YelpAPI
 
 public class BusinessMapViewModel: NSObject {
 
   // MARK: - Properties
-  public let coordinate: CLLocationCoordinate2D
-  public let name: String
-  public let rating: Double
-  public let image: UIImage
-  public let ratingDescription: String
+
+  private let business: YLPBusiness
+
+  public var image: UIImage {
+    switch business.rating {
+    case 0.0..<3.5: UIImage(resource: .bad)
+    case 3.5..<4.0: UIImage(resource: .meh)
+    case 4.0..<4.75: UIImage(resource: .good)
+    case 4.75...5.0: UIImage(resource: .great)
+    default: UIImage(resource: .bad)
+    }
+  }
 
   // MARK: - Object Lifecycle
-  public init(
-    coordinate: CLLocationCoordinate2D,
-    name: String,
-    rating: Double,
-    image: UIImage
-  ) {
-    self.coordinate = coordinate
-    self.name = name
-    self.rating = rating
-    self.image = image
-    self.ratingDescription = "\(rating) stars"
+  public init?(business: YLPBusiness) {
+    guard business.location.coordinate != nil else {
+      return nil
+    }
+
+    self.business = business
   }
 }
 
 // MARK: - MKAnnotation
 extension BusinessMapViewModel: MKAnnotation {
 
+  public var coordinate: CLLocationCoordinate2D {
+    return CLLocationCoordinate2D(
+      latitude: business.location.coordinate!.latitude,
+      longitude: business.location.coordinate!.longitude
+    )
+  }
+
   public var title: String? {
-    return name
+    return business.name
   }
 
   public var subtitle: String? {
-    return ratingDescription
+    return "\(business.rating) stars"
   }
 }
