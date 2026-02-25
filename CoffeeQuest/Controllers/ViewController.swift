@@ -32,8 +32,8 @@ import YelpAPI
 public class ViewController: UIViewController {
   
   // MARK: - Properties
-  private var businesses: [YLPBusiness] = []
-  private let client = YLPClient(apiKey: YelpAPIKey)
+  private var businesses = [Business]()
+  public var client: BusinessSearchClient = YLPClient(apiKey: YelpAPIKey)
   private let locationManager = CLLocationManager()
   public let annotationFactory = AnnotationFactory()
   
@@ -86,39 +86,30 @@ extension ViewController: MKMapViewDelegate {
   }
   
   private func searchForBusinesses() {
-    let coordinate = mapView.userLocation.coordinate
-    guard coordinate.latitude != 0,
-      coordinate.longitude != 0 else {
-        return
-    }
-    
-    let yelpCoordinate = YLPCoordinate(latitude: coordinate.latitude,
-                                       longitude: coordinate.longitude)
-    
-    client.search(with: yelpCoordinate,
-                  term: "coffee",
-                  limit: 35,
-                  offset: 0,
-                  sort: .bestMatched) { [weak self] (searchResult, error) in
-                    guard let self = self else { return }
-                    guard let searchResult = searchResult,
-                      error == nil else {
-                        print("Search failed: \(String(describing: error))")
-                        return
-                    }
-                    self.businesses = searchResult.businesses
-                    DispatchQueue.main.async {
-                      self.addAnnotations()
-                    }
+    client.search(
+      with: mapView.userLocation.coordinate,
+      term: "coffee",
+      limit: 35,
+      offset: 0
+    ) { [weak self] result in
+      guard let self else { return }
+
+      switch result {
+      case .success(let businesses):
+        self.businesses = businesses
+
+        DispatchQueue.main.async {
+          self.addAnnotations()
+        }
+      case .failure(let error):
+        print("Search failed: \(error.localizedDescription)")
+      }
     }
   }
   
   private func addAnnotations() {
-    for business in businesses {
-      guard
-        let viewModel =
-          annotationFactory.createBusinessMapViewModel(for: business)
-      else { continue }
+    businesses.forEach {
+      let viewModel = annotationFactory.createBusinessMapViewModel(for: $0)
 
       mapView.addAnnotation(viewModel)
     }

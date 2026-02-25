@@ -27,36 +27,9 @@
 /// THE SOFTWARE.
 
 import MapKit
-import UIKit
 
-public class AnnotationFactory {
-  public func createBusinessMapViewModel(
-    for business: Business
-  ) -> BusinessMapViewModel {
-    let name = business.name
-    let rating = business.rating
-    let image: UIImage
-
-    switch rating {
-    case 0.0..<3.0:
-      image = UIImage(resource: .terrible)
-    case 3.0..<3.5:
-      image = UIImage(resource: .bad)
-    case 3.5..<4.0:
-      image = UIImage(resource: .meh)
-    case 4..<4.75:
-      image = UIImage(resource: .good)
-    case 4.75...5.0:
-      image = UIImage(resource: .great)
-    default:
-      image = UIImage(resource: .bad)
-    }
-
-    return BusinessMapViewModel(
-      coordinate: business.location,
-      name: name,
-      rating: rating,
-      image: image
-    )
-  }
+public struct Business {
+  var name: String
+  var rating: Double
+  var location: CLLocationCoordinate2D
 }

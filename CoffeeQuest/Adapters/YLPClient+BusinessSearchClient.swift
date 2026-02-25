@@ -27,36 +27,62 @@
 /// THE SOFTWARE.
 
 import MapKit
-import UIKit
+import YelpAPI
 
-public class AnnotationFactory {
-  public func createBusinessMapViewModel(
-    for business: Business
-  ) -> BusinessMapViewModel {
-    let name = business.name
-    let rating = business.rating
-    let image: UIImage
+// MARK: - BusinessSearchClient
 
-    switch rating {
-    case 0.0..<3.0:
-      image = UIImage(resource: .terrible)
-    case 3.0..<3.5:
-      image = UIImage(resource: .bad)
-    case 3.5..<4.0:
-      image = UIImage(resource: .meh)
-    case 4..<4.75:
-      image = UIImage(resource: .good)
-    case 4.75...5.0:
-      image = UIImage(resource: .great)
-    default:
-      image = UIImage(resource: .bad)
-    }
-
-    return BusinessMapViewModel(
-      coordinate: business.location,
-      name: name,
-      rating: rating,
-      image: image
+extension YLPClient: BusinessSearchClient {
+  public func search(
+    with coordinate: CLLocationCoordinate2D,
+    term: String,
+    limit: UInt,
+    offset: UInt,
+    completion: @escaping (Result<[Business], any Error>) -> Void
+  ) {
+    let yelpCoordinate = YLPCoordinate(
+      latitude: coordinate.latitude,
+      longitude: coordinate.longitude
     )
+
+    search(
+      with: yelpCoordinate,
+      term: term,
+      limit: limit,
+      offset: offset,
+      sort: .bestMatched
+    ) { searchResult, error in
+      if let error {
+        completion(.failure(error))
+
+        return
+      }
+
+      guard let searchResult else {
+        print("Error: Failed to get search result for term \(term).")
+
+        return
+      }
+
+      let businesses: [Business] = searchResult
+        .businesses
+        .compactMap { business in
+          guard let yelpCoordinate = business.location.coordinate else {
+            return nil
+          }
+
+          let location = CLLocationCoordinate2D(
+            latitude: yelpCoordinate.latitude,
+            longitude: yelpCoordinate.longitude
+          )
+
+          return Business(
+            name: business.name,
+            rating: business.rating,
+            location: location
+          )
+        }
+
+      completion(.success(businesses))
+    }
   }
 }
